@@ -12,7 +12,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.startswith('!ping'):
-       await client.send_message(message.channel, 'Pong!')
+    if message.content.startswith('&help'):
+       await client.send_message(message.channel, 'Help will display here.')
 
 client.run('335591769414696961')

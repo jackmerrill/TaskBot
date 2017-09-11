@@ -19,7 +19,7 @@ async def hi():
 
 @bot.command()
 async def roll(dice : str):
-    """Rolls a dice in NdN format."""
+    """Rolls a dice in NdN format. It's &roll (number)"""
     try:
         rolls, limit = map(int, dice.split('d'))
     except Exception:

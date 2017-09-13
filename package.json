@@ -1,0 +1,31 @@
+{
+  "name": "taskbot",
+  "version": "1.0.0",
+  "description": "Use TaskBot to manage tasks for you and your Discord!",
+  "main": "main.js",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "opusscript": "^0.0.3",
+    "ytdl-core": "^0.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": ";help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoshifan509/TaskBot.git"
+  },
+  "keywords": [
+    "heroku",
+    "discord.js"
+  ],
+  "author": "AmusedGrape",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoshifan509/TaskBot/issues"
+  },
+  "homepage": "https://github.com/yoshifan509/TaskBot#readme"
+}

@@ -38,11 +38,14 @@ client.on('message', msg => {
   if (msg.content === ';ping') {
     msg.reply('Pong!');
   }
+  if (msg.content === ';invite') {
+    msg.author.sendMessage('Want to invite me to your server? Here is the link! https://discordapp.com/oauth2/authorize?client_id=335591769414696961&scope=bot&permissions=2146958591')
+  }
   if (msg.content === ';help') {
     // msg.author.sendMessage("**Commands for TaskBot:**\n;ping - replies with 'Pong!'.\n;help - Direct Messages you this menu.")
     const embed = new Discord.RichEmbed()
   .setTitle('Commands for TaskBot')
-  .setAuthor('TaskBot Team', 'https://example.com')
+  .setAuthor('TaskBot Team', 'https://taskbotdiscord.herokuapp.com')
   /*
    * Alternatively, use '#00AE86', [0, 174, 134] or an integer number.
    */

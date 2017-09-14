@@ -39,7 +39,7 @@ client.on('message', msg => {
     msg.reply('Pong!');
   }
   if (msg.content === ';invite') {
-    msg.author.sendMessage('Want to invite me to your server? Here is the link! https://discordapp.com/oauth2/authorize?client_id=335591769414696961&scope=bot&permissions=2146958591')
+    msg.author.send('Want to invite me to your server? Here is the link! https://discordapp.com/oauth2/authorize?client_id=335591769414696961&scope=bot&permissions=2146958591')
   }
   if (msg.content === ';help') {
     // msg.author.sendMessage("**Commands for TaskBot:**\n;ping - replies with 'Pong!'.\n;help - Direct Messages you this menu.")
@@ -74,7 +74,7 @@ client.on('message', msg => {
  *  You can only use the shorthand "{ embed }" when your embed variable is also called embed.
  *  If it's not called embed, use "{ embed: variableName }" instead.
  */
-msg.author.sendMessage({ embed });
+msg.author.send({ embed });
   }
   client.on('message', message => {
     if (message.content.startsWith(';play')) {

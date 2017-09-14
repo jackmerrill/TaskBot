@@ -29,7 +29,7 @@ setInterval(() => {
 const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
-const args = msg.content.slice(prefix.length).trim().split(/ +/g);
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -78,6 +78,7 @@ msg.author.send({ embed });
   }
   client.on('message', message => {
     if (message.content === ";play") {
+      const args = msg.content.slice(prefix.length).trim().split(/ +/g);
       let audio = args[0]
       const voiceChannel = message.member.voiceChannel;
       if (!voiceChannel) return message.reply(`Please be in a voice channel first!`);

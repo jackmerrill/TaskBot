@@ -83,7 +83,7 @@ msg.author.send({ embed });
       if (!voiceChannel) return message.reply(`Please be in a voice channel first!`);
       voiceChannel.join()
         .then(connnection => {
-          const stream = ytdl("${audio}", { filter: 'audioonly' });
+          const stream = ytdl(`${audio}`, { filter: 'audioonly' });
           const dispatcher = connnection.playStream(stream);
           dispatcher.on(';stop', () => voiceChannel.leave());
         });

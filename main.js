@@ -97,8 +97,8 @@ msg.author.send({ embed });
     if (message.content === ";new") {
       server = message.guild;
       server.createChannel('TaskList', "text");
-      var channel = client.servers.get("name", "TaskBot PRIVATE Testing Server").tasklist;
-      client.sendMessage(channel, "Hello");
+      channel = msg.guild.channels.find('name', 'tasklist')
+      client.sendMessage(channel, 'Test!');
     }
   });
 });

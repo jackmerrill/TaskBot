@@ -29,7 +29,7 @@ setInterval(() => {
 const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
 const client = new Discord.Client();
-
+const args = message.content.slice(prefix.length).trim().split(/ +/g);
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });

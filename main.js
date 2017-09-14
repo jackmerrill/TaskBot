@@ -36,7 +36,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === ';ping') {
-    msg.reply('Pong!')
+    msg.send('Pong!')
     msg.edit(`Pong! Latency is ${msg.createdTimestamp - msg.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);;
   }
   if (msg.content === ';invite') {

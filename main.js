@@ -94,5 +94,4 @@ msg.author.send({ embed });
 }
   });
 });
-emitter.setMaxListeners('10000')
 client.login('MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY');

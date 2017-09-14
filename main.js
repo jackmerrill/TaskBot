@@ -98,7 +98,7 @@ msg.author.send({ embed });
       server = message.guild;
       server.createChannel('TaskList', "text");
       channel = msg.guild.channels.find('name', 'tasklist')
-      client.sendMessage(channel, 'Test!');
+      msg.channel.send(channel, 'Test!');
     }
   });
 });

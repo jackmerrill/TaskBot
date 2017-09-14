@@ -63,12 +63,12 @@ client.on('message', msg => {
   /*
    * Inline fields may not display as inline if the thumbnail and/or image is too big.
    */
-  .addField('Inline Field', 'Hmm 🤔', true)
+  .addField('Admin Commands', ';kick - Kicks the mentioned user from the server.\n', true)
   /*
    * Blank field, useful to create some space.
    */
   .addField('\u200b', '\u200b', true)
-  .addField('Second (3rd place) Inline Field', 'I\'m in the ZOONE', true);
+  .addField('Fun/Misc Commands', ';play <youtube-link> - Plays a video from YouTube into a voice channel. You must be in a voice channel.\n ;stop - Stops all audio in the voice channel.', true);
 
 /*
  *  You can only use the shorthand "{ embed }" when your embed variable is also called embed.
@@ -77,17 +77,22 @@ client.on('message', msg => {
 msg.author.send({ embed });
   }
   client.on('message', message => {
-    if (message.content.startsWith(';play')) {
+    if (message.content === ";play") {
+      let audio = args[0]
       const voiceChannel = message.member.voiceChannel;
       if (!voiceChannel) return message.reply(`Please be in a voice channel first!`);
       voiceChannel.join()
         .then(connnection => {
-          const stream = ytdl("https://www.youtube.com/watch?v=dQw4w9WgXcQ", { filter: 'audioonly' });
+          const stream = ytdl("${audio}", { filter: 'audioonly' });
           const dispatcher = connnection.playStream(stream);
-          dispatcher.on('end', () => voiceChannel.leave());
+          dispatcher.on(';stop', () => voiceChannel.leave());
         });
     }
+    if (message.content === ";kick") {
+      let member = message.mentions.members.first();
+      member.kick();
+}
   });
 });
-
+emitter.setMaxListeners('10000')
 client.login('MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY');

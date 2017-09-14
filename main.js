@@ -36,8 +36,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (msg.content === ';ping') {
-    const m = async msg.channel.send("Ping?");
-    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
+    msg.reply('Pong!')
   }
   if (msg.content === ';invite') {
     msg.author.send('Want to invite me to your server? Here is the link! https://discordapp.com/oauth2/authorize?client_id=335591769414696961&scope=bot&permissions=2146958591')

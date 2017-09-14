@@ -93,7 +93,11 @@ msg.author.send({ embed });
     if (message.content === ";kick") {
       let member = message.mentions.members.first();
       member.kick();
-}
+    }
+    if (message.content === ";new") {
+      server = message.guild;
+      server.createChannel('TaskList', "Test")
+    }
   });
 });
 client.login('MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY');

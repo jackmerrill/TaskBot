@@ -96,7 +96,7 @@ msg.author.send({ embed });
     }
     if (message.content === ";new") {
       server = message.guild;
-      server.createChannel('TaskList', "Test")
+      server.createChannel('TaskList', "text")
     }
   });
 });

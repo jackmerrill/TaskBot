@@ -84,7 +84,7 @@ msg.author.send({ embed });
 			msg.reply("Already playing a song!");
 		}
 		else{
-			if(msg.content.substring(5,1)!=' ')
+			if(msg.content.substring(5,6)!=' ')
 				return;
 		  const args = msg.content.substring(6).trim().split(/ +/g);
 		  const command = args.shift().toLowerCase();
@@ -116,9 +116,9 @@ msg.author.send({ embed });
     if (msg.content.substring(0,4) === ";new") {
 		var name="TaskList";
 		if(msg.content.length>5){
-			if(msg.content.substring(4,1)==' ')
+			if(msg.content.substring(4,5)==' ')
 				name=msg.content.substring(5);
-			else return msg.reply("substring(4,1) is "+msg.content.substring(4,1));
+			else return;
 		}
       server = msg.guild;
       if(!(!server.available || server.channels.findAll("name",name).length>0)){

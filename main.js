@@ -76,13 +76,13 @@ client.on('message', msg => {
  */
 msg.author.send({ embed });
   }
-  client.on('message', message => {
-    if (message.content === ";play") {
+
+    if (msg.content === ";play") {
       const args = msg.content.slice(prefix.length).trim().split(/ +/g);
       const command = args.shift().toLowerCase();
       let audio = args[0]
-      const voiceChannel = message.member.voiceChannel;
-      if (!voiceChannel) return message.reply(`Please be in a voice channel first!`);
+      const voiceChannel = msg.member.voiceChannel;
+      if (!voiceChannel) return msg.reply(`Please be in a voice channel first!`);
       voiceChannel.join()
         .then(connnection => {
           const stream = ytdl(`${audio}`, { filter: 'audioonly' });
@@ -90,16 +90,17 @@ msg.author.send({ embed });
           dispatcher.on(';stop', () => voiceChannel.leave());
         });
     }
-    if (message.content === ";kick") {
-      let member = message.mentions.members.first();
+    if (msg.content === ";kick") {
+      let member = msg.mentions.members.first();
       member.kick();
     }
-    if (message.content === ";new") {
-      server = message.guild;
-      server.createChannel('TaskList', "text");
-      channel = msg.guild.channels.find('name', 'tasklist')
-      msg.channel.send(channel, 'Test!');
+    if (msg.content === ";new") {
+      server = msg.guild;
+      if(!(!server.available() || server.channels.findAll("name","tasklist").length>0)){
+		server.createChannel('TaskList', "text");
+		channel = server.channels.find('name', 'tasklist');
+		msg.channel.send(channel, 'Test!');
+	}
     }
   });
-});
 client.login('MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY');

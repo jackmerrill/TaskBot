@@ -3,8 +3,6 @@ const app = express();
 
 var v=null;
 
-var ytdl=require("ytdl-core");
-
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 const port = process.env.PORT || 5000;

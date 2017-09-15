@@ -127,14 +127,12 @@ msg.author.send({ embed });
     }
     if (msg.content.substring(0,7) === ";remove") {
 		var name="TaskList";
-		if(msg.content.length>5){
-			if(msg.content.substring(7,8)==' ')
-				name=msg.content.substring(8);
-			else return;
-		}
+		if(msg.content.substring(7,8)==' ')
+			name=msg.content.substring(8);
+		else return;
       server = msg.guild;
-      if(!(!server.available || server.channels.findAll("name",name).length==0)){
-		server.channels.find(name, "text").delete("Removal requested");
+      if(server.available && server.channels.findAll("name",name).length!=0){
+		server.channels.findAll(name, "text")[0].delete("Removal requested").then("Removed channel "+name).catch(console.error);
 	}
 }
   });

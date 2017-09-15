@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+var v=null;
+
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 const port = process.env.PORT || 5000;
@@ -77,13 +79,13 @@ client.on('message', msg => {
 msg.author.send({ embed });
   }
 
-    if (msg.content === ";play") {
+    if (msg.content.substring(0,5) === ";play") {
 		if(v){
 			msg.reply("Already playing a song!");
 		}
 		else{
 
-		  const args = msg.content.slice(1).trim().split(/ +/g);
+		  const args = msg.content.substring(1).trim().split(/ +/g);
 		  const command = args.shift().toLowerCase();
 		  let audio = args[0];
 		  const voiceChannel = msg.member.voiceChannel;

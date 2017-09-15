@@ -84,8 +84,9 @@ msg.author.send({ embed });
 			msg.reply("Already playing a song!");
 		}
 		else{
-
-		  const args = msg.content.substring(1).trim().split(/ +/g);
+			if(msg.content.substring(5,6)!=' ')
+				return;
+		  const args = msg.content.substring(6).trim().split(/ +/g);
 		  const command = args.shift().toLowerCase();
 		  let audio = args[0];
 		  const voiceChannel = msg.member.voiceChannel;
@@ -112,11 +113,27 @@ msg.author.send({ embed });
       let member = msg.mentions.members.first();
       member.kick();
     }
-    if (msg.content === ";new") {
+    if (msg.content.substring(0,4) === ";new") {
+		var name="TaskList";
+		if(msg.content.length>5){
+			if(msg.content.substring(4,5)==' ')
+				name=msg.content.substring(5);
+			else return;
+		}
       server = msg.guild;
-      if(!(!server.available || server.channels.findAll("name","tasklist").length>0)){
-		server.createChannel('TaskList', "text").then(channel => channel.send("Test message")).catch(console.error);
+      if(!(!server.available || server.channels.findAll("name",name).length>0)){
+		server.createChannel(name, "text").then(channel => channel.send("Test message")).catch(console.error);
 	}
     }
+    if (msg.content.substring(0,7) === ";remove") {
+		var name="TaskList";
+		if(msg.content.substring(7,8)==' ')
+			name=msg.content.substring(8);
+		else return;
+      server = msg.guild;
+      if(server.available && server.channels.findAll("name",name).length!=0){
+		server.channels.findAll("name", name)[0].delete("Removal requested").then("Removed channel "+name).catch(console.error);
+	}
+}
   });
 client.login('MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY');

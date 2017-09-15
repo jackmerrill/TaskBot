@@ -118,7 +118,7 @@ msg.author.send({ embed });
 		if(msg.content.length>5){
 			if(msg.content.substring(4,1)==' ')
 				name=msg.content.substring(5);
-			else return msg.reply(";new Requires an argument!");
+			else return msg.reply("substring(4,1) is "+msg.content.substring(4,1));
 		}
       server = msg.guild;
       if(!(!server.available || server.channels.findAll("name",name).length>0)){

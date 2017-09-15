@@ -78,18 +78,34 @@ msg.author.send({ embed });
   }
 
     if (msg.content === ";play") {
-      const args = msg.content.slice(prefix.length).trim().split(/ +/g);
-      const command = args.shift().toLowerCase();
-      let audio = args[0]
-      const voiceChannel = msg.member.voiceChannel;
-      if (!voiceChannel) return msg.reply(`Please be in a voice channel first!`);
-      voiceChannel.join()
-        .then(connnection => {
-          const stream = ytdl(`${audio}`, { filter: 'audioonly' });
-          const dispatcher = connnection.playStream(stream);
-          dispatcher.on(';stop', () => voiceChannel.leave());
-        });
+		if(v){
+			msg.reply("Already playing a song!");
+		}
+		else{
+
+		  const args = msg.content.slice(1).trim().split(/ +/g);
+		  const command = args.shift().toLowerCase();
+		  let audio = args[0];
+		  const voiceChannel = msg.member.voiceChannel;
+		  if (voiceChannel)
+			voiceChannel.join()
+				.then(connnection => {
+				  const stream = ytdl(audio, { filter: "audioonly" });
+				  const dispatcher = connnection.playStream(stream);
+				  v=voiceChannel;
+				});
+		  else
+			msg.reply("Please be in a voice channel first!");
+		}
     }
+    if (msg.content === ";stop"){
+		if(v){
+			v.leave();
+			v=null;
+		}
+		else
+			msg.reply("Not in a voice channel!");
+	}
     if (msg.content === ";kick") {
       let member = msg.mentions.members.first();
       member.kick();

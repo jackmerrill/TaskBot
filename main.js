@@ -96,7 +96,7 @@ msg.author.send({ embed });
     }
     if (msg.content === ";new") {
       server = msg.guild;
-      if(!(!server.available() || server.channels.findAll("name","tasklist").length>0)){
+      if(!(!server.available || server.channels.findAll("name","tasklist").length>0)){
 		server.createChannel('TaskList', "text");
 		channel = server.channels.find('name', 'tasklist');
 		msg.channel.send(channel, 'Test!');

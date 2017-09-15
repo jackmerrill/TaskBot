@@ -134,7 +134,7 @@ msg.author.send({ embed });
 		}
       server = msg.guild;
       if(!(!server.available || server.channels.findAll("name",name).length==0)){
-		server.channels.find(name, "text").then(channel => channel.delete("Removal requested")).catch(console.error);
+		server.channels.find(name, "text").delete("Removal requested");
 	}
 }
   });

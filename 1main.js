@@ -36,7 +36,7 @@ client.on("guildDelete", guild => {
 });
 
 
-client.on("message"), async message => {
+client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.
 
   // It's good practice to ignore other bots. This also makes your bot ignore itself
@@ -101,7 +101,7 @@ client.on("message"), async message => {
   }
 
   if(command === 'eval') {
-    if (!config.owners.includes(msg.author.id)) return message.reply('only my owner can use this command.');
+    if (!config.owners.includes(message.author.id)) return message.reply('only my owner can use this command.');
     const code = clean(args.join(' '));
     const start = process.hrtime();
     try {

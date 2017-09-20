@@ -114,8 +114,18 @@ msg.author.send({ embed });
     if (msg.content === ";new") {
       server = msg.guild;
       if(!(!server.available || server.channels.findAll("name","tasklist").length>0)){
-		server.createChannel('TaskList', "text").then(channel => channel.send("**TaskList**\n:x: | TaskName")).catch(console.error);
-	}
+		server.createChannel('TaskList', "text").then(channel => channel.send("**TaskList**")).catch(console.error);
+
     }
+	 }
+   if (msg.content === ";add") {
+     msg.edit('**TaskList**\n:x: | TaskName')
+     .then(msg => console.log(`Updated the content of a message from ${msg.author}`))
+     .catch(console.error);
+    }
+
   });
-client.login('MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY');
+  // MzU5ODgwNzAyNTEyMDcwNjU3.DKNciQ.s1ym_6neCcselc5JeEUWxgqPDqc == Testing
+  // MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY == Release
+  // CHANGE THEM!!
+client.login('MzU5ODgwNzAyNTEyMDcwNjU3.DKNciQ.s1ym_6neCcselc5JeEUWxgqPDqc');

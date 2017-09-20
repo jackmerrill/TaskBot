@@ -114,7 +114,7 @@ msg.author.send({ embed });
     if (msg.content === ";new") {
       server = msg.guild;
       if(!(!server.available || server.channels.findAll("name","tasklist").length>0)){
-		server.createChannel('TaskList', "text").then(channel => channel.send("Test message")).catch(console.error);
+		server.createChannel('TaskList', "text").then(channel => channel.send("**TaskList**\n:x: | TaskName")).catch(console.error);
 	}
     }
   });

@@ -136,7 +136,7 @@ msg.author.send({ embed });
     }
 	 }*/
 	 if(msg.content.startsWith(";eval")&&msg.content.length>5){
-		 eval(msg.content.substring(5));
+		 try{eval(msg.content.substring(5));}catch(e){console.error(e);msg.guild.channels.findAll("name","general")[0].send(e);}
 	 }
    if (msg.content === ";add") {
      msg.edit('**TaskList**\n:x: | TaskName')

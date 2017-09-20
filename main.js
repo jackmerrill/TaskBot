@@ -112,10 +112,15 @@ msg.author.send({ embed });
       let member = msg.mentions.members.first();
       member.kick();
     }
-    if (msg.content === ";new") {
+    if (msg.content.startsWith(";new")) {
+      if(msg.content.length==4)
+        var name=";new";
+      else if(msg.content.length>5)
+        name=msg.content.substring(5);
+      else return;
       server = msg.guild;
-      if(!(!server.available || server.channels.findAll("name","tasklist").length>0)){
-		server.createChannel('TaskList', "text").then(channel => channel.send("**TaskList**")).catch(console.error);
+      if(!(!server.available || server.channels.findAll("name",name).length>0)){
+		server.createChannel(name, "text").then(channel => channel.send("**TaskList**")).catch(console.error);
 
     }
 	 }

@@ -1,6 +1,10 @@
 // Load up the discord.js library
 const Discord = require("discord.js");
 
+// Stuff for eval command
+const { inspect } = require('util');
+const clean = text => typeof text === 'string' ? text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203)) : text;
+
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
 // this is what we're refering to. Your client.
@@ -32,7 +36,7 @@ client.on("guildDelete", guild => {
 });
 
 
-client.on("message"), async message => {
+client.on("message", async message => {
   // This event will run on every single message received, from any channel or DM.
 
   // It's good practice to ignore other bots. This also makes your bot ignore itself
@@ -96,6 +100,39 @@ client.on("message"), async message => {
 
   }
 
+  if(command === 'eval') {
+    if (!config.owners.includes(message.author.id)) return message.reply('only my owner can use this command.');
+    const code = clean(args.join(' '));
+    const start = process.hrtime();
+    try {
+      let evaled = await clean(eval(code));
+      if (typeof evaled !== 'string') evaled = inspect(evaled, {depth: 1});
+      const link = evaled.length > 1600 ? `Full: ${await haste(evaled, 'js')}` : '';
+      message.channel.send([
+        `📥 **INPUT**`,
+        '```js',
+        `${code.substring(0, 300) || 'undefined'}${code.length > 300 ? `... (${code.length - 300} more characters)` : ''}`,
+        '```',
+        `📤 **OUTPUT** ${process.hrtime(start).join('.')}ms`,
+        '```js',
+        `${evaled.substring(0, 1600) || 'undefined'}${evaled.length > 1600 ? `... (${evaled.length - 1600} more characters)` : ''}`,
+        '```',
+        link
+      ]);
+    } catch (err) {
+      message.channel.send([
+        `📥 **INPUT**`,
+        '```js',
+        `${code.substring(0, 300) || 'undefined'}${code.length > 300 ? `... (${code.length - 300} more characters)` : ''}`,
+        '```',
+        `📤 **OUTPUT** ${process.hrtime(start).join('.')}ms`,
+        '```js',
+        clean(err) || 'undefined',
+        '```'
+      ]);
+    }
+  }
+  
   if(command === "ban") {
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)

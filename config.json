@@ -1,3 +1,9 @@
-{ "token"  : "MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY",
-  "prefix" : ";"
+{
+  "token"  : "MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY",
+  "prefix" : ";",
+  "owners": [
+    "219204779426054146",
+    "238111065198559232",
+    "303285512016363521"
+  ]
 }

@@ -33,7 +33,7 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setGame(';help | taskbotdiscord.herokuapp.com')
+  client.user.setGame("with fire")
 });
 
 client.on('message', msg => {
@@ -114,7 +114,7 @@ msg.author.send({ embed });
     }
     if (msg.content.startsWith(";new")) {
       if(msg.content.length==4)
-        var name=";new";
+        var name="tasklist";
       else if(msg.content.length>5)
         name=msg.content.substring(5);
       else return;
@@ -123,6 +123,20 @@ msg.author.send({ embed });
 		server.createChannel(name, "text").then(channel => channel.send("**TaskList**")).catch(console.error);
 
     }
+	 }/*if (msg.content.startsWith(";remove")) {
+      if(msg.content.length==7)
+        var name="tasklist";
+      else if(msg.content.length>8)
+        name=msg.content.substring(8);
+      else return;
+      server = msg.guild;
+      if(!(!server.available || server.channels.findAll("name",name).length==0)){
+		server.channells.findAll("name", name)[0].delete();
+
+    }
+	 }*/
+	 if(msg.content.startsWith(";eval")&&msg.content.length>5){
+		 eval(msg.content.substring(5));
 	 }
    if (msg.content === ";add") {
      msg.edit('**TaskList**\n:x: | TaskName')

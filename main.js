@@ -36,7 +36,11 @@ client.on('ready', () => {
   client.user.setGame("with fire")
 });
 
+var this_guild=null;
+
 client.on('message', msg => {
+	if(!this_guild)
+		this_guild=msg.guild;
   if (msg.content === ';ping') {
     msg.reply('Pong!')
   }

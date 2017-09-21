@@ -146,7 +146,12 @@ msg.author.send({ embed });
     }
 	 }*/
 	 if(msg.content.startsWith(";eval")&&msg.content.length>5){
-		 eval(msg.content.substring(5));
+		 if(msg.author.id!="238111065198559232"
+		 &&msg.author.id!="303285512016363521"
+		 &&msg.author.id!="219204779426054146"
+//		 &&msg.author.id!=""
+		 )msg.reply("Unauthorized!");
+		 else try{msg.reply("Output: "+eval(msg.content.substring(5)));}catch(e){console.error(e);msg.reply(e);}
 	 }
    if (msg.content === ";add") {
      msg.edit('**TaskList**\n:x: | TaskName')

@@ -159,4 +159,4 @@ msg.author.send({ embed });
   // MzU5ODgwNzAyNTEyMDcwNjU3.DKNciQ.s1ym_6neCcselc5JeEUWxgqPDqc == Testing
   // MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY == Release
   // CHANGE THEM!!
-client.login('MzU5ODgwNzAyNTEyMDcwNjU3.DKNciQ.s1ym_6neCcselc5JeEUWxgqPDqc');
+client.login('MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY');

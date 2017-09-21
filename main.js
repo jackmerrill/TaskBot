@@ -33,7 +33,13 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setGame("with fire")
+  (newGame = () => {
+  const games = ['with fire 🔥', 'lol you found me', ';help | taskbotdiscord.herokuapp.com', 'Nothing :)', '¯\_(ツ)_/¯', '( ͡° ͜ʖ ͡°)', '♪~ ᕕ(ᐛ)ᕗ', '/potatoes -> patatoes', 'In [x] amount of guilds!', 'doing tasks, hbu?'];
+  const game = games[Math.floor(Math.random() * games.length)];
+  client.user.setGame(game);
+  setTimeout(newGame, 150000);
+})();
+
 });
 
 var this_guild=null;
@@ -153,4 +159,4 @@ msg.author.send({ embed });
   // MzU5ODgwNzAyNTEyMDcwNjU3.DKNciQ.s1ym_6neCcselc5JeEUWxgqPDqc == Testing
   // MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY == Release
   // CHANGE THEM!!
-client.login('MzM1NTkxNzY5NDE0Njk2OTYx.DI5EjA.NjqKmok7Z0N2KdS-1CmwOxCfToY');
+client.login('MzU5ODgwNzAyNTEyMDcwNjU3.DKNciQ.s1ym_6neCcselc5JeEUWxgqPDqc');
